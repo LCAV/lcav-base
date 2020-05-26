@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: kashani-pod
+spec:
+    containers:
+      - name: kashani
+        image: ic-registry.epfl.ch/lcav/lcav-base:20200526_1300
+        command:
+          - sleep
+          - infinity
+        volumeMounts:
+          - name: lcav-scratch
+            mountPath: /scratch
+        resources:
+            requests:
+                cpu: "2"
+                memory: "4Gi"
+            limits:
+                cpu: "4"
+                memory: "8Gi"
+                # nvidia.com/gpu: 1  # (Must only be specified here)
+    volumes:
+      - name: lcav-scratch
+        persistentVolumeClaim:
+            claimName: lcav-scratch
