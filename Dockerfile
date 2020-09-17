@@ -45,12 +45,12 @@ USER root
 
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
     /bin/bash miniconda.sh -b -p /opt/conda && \
-    /opt/conda/bin/conda clean -tipsy
+    /opt/conda/bin/conda clean -tipsy && \
+    /opt/conda/bin/conda init bash
 
 # Prepare Environment for use ==================================================
 WORKDIR /root
 ADD  shell/.bash_aliases    .
-RUN printf "export PATH="${PATH}":/opt/conda/bin" | tee -a ./.bash_aliases
 RUN printf "if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi" | tee -a ./.bashrc
 ADD  tmux/.tmux.conf        .
 ADD  tmux/.tmux.conf.local  .

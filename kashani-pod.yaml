@@ -5,7 +5,7 @@ metadata:
 spec:
     containers:
       - name: kashani
-        image: ic-registry.epfl.ch/lcav/lcav-base:20200526_1300
+        image: ic-registry.epfl.ch/lcav/lcav-base:20200917_1330
         command:
           - sleep
           - infinity
